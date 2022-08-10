@@ -1,0 +1,9 @@
+Iniciar server en modo Fork
+node <server> -modo FORK -p <port>
+node <server> -p <port>
+Si corremos sin "-mod Fork" inicia en modo fork de todas formas
+
+Iniciar en modo Cluster
+
+node <server> -modo CLUSTER -p <port>
+
