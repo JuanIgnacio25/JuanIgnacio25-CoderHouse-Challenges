@@ -24,6 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+
 app.use((req,res,next)=>{
     logger.info(`ruta ${req.url}, método ${req.method}`)
     next()
@@ -88,7 +89,7 @@ app.get('/logout', (req, res, next) => {
     res.render("logout");
 })
 
-app.get("/info_gzip", compression() ,(req, res) => {
+app.get("/info", compression() ,(req, res) => {
     const info = {
         args: process.argv,
         system: process.platform,
@@ -102,7 +103,7 @@ app.get("/info_gzip", compression() ,(req, res) => {
     res.send(info);
 })
 
-app.get("/info", (req, res) => {
+app.get("/info_log", (req, res) => {
     const info = {
         args: process.argv,
         system: process.platform,
@@ -113,12 +114,12 @@ app.get("/info", (req, res) => {
         proccessTitle: process.title,
         cpus: os.cpus().length
     }
+    console.log('test info')
     res.send(info);
 })
 
 app.get("/api/random/:num?", (req, res) => {
     const num = req.query.num || "100000000";
-
     const calcFork = fork("./fork")
     calcFork.send(num)
     calcFork.on("message", (numbers) => {

@@ -1,1 +1,3 @@
 {"level":"warn","message":"ruta /saludoGzip, método GET no implementada"}
+{"level":"warn","message":"ruta /randoms, método GET no implementada"}
+{"level":"warn","message":"ruta /info_gzip, método GET no implementada"}
