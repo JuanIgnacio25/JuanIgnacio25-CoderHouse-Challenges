@@ -1,8 +1,10 @@
-const {getAllProducts} = require('./service');
+const {productService} = require('./service');
 
-const showAllProducts = async(req,res) => {
-    const products = await getAllProducts();
-    res.send({products: products});
+const renderHome = async(req,res) => {
+    const products = await productService.getAllProducts();
+    const data = await productService.findUser(req.session.passport.user);
+    const {username , name , address , age , phone_number} = data;
+    res.render('home',{username , name , address , age , phone_number,products: products});
 }
 
-module.exports = {showAllProducts};
+module.exports = {productsController:{renderHome}};

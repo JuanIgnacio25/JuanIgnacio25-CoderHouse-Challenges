@@ -9,8 +9,10 @@ const cookieParser = require('cookie-parser');
 const sessionOptions = require('./src/utils/session_options');
 const engine_options = require('./src/utils/engine_hbs');
 const logger = require('./src/utils/winston');
+const chekLogin = require('./src/middlewares/checkLogin');
 const productsRouter = require('./src/products/router');
 const sessionRouter = require('./src/session/router');
+const cartRouter = require('./src/cart/router');
 
 const app = express();
 
@@ -27,9 +29,9 @@ app.engine('hbs',engine(engine_options));
 app.set('views', './public/hbs_views');
 app.set('view engine', 'hbs');
 
-
-app.use('/', productsRouter);
-app.use('/session',sessionRouter);
+app.use('/api/cart',cartRouter);
+app.use('/api/products', productsRouter);
+app.use('/',sessionRouter);
 
 const port = process.env.PORT || 8080
 

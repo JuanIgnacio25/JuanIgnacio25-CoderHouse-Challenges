@@ -8,12 +8,22 @@ const userSchema = new mongoose.Schema({
     address: { type: String },
     age: { type: Number },
     phone_number: { type: String },
-    cartId: { type: Number }
+    cart_Id: { type: Number }
 });
 
 class DaoSessionMongoDb extends MongoDbContainer {
     constructor() {
         super('users', userSchema);
+    }
+
+    async addUser(user) {
+        try {
+            const saveNew = this.collection(user);
+            await saveNew.save();
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
 
     async findUser(username) {
@@ -27,7 +37,7 @@ class DaoSessionMongoDb extends MongoDbContainer {
 
     async updateUser(email, user) {
         try {
-            const updateUser = this.collection.updateOne({ username: email }, { $set: { name: user.name, address: user.address, phone_number: user.number, age: user.age } })
+            const updateUser = this.collection.updateOne({ username: email }, { $set: { name: user.name, address: user.address, phone_number: user.number, age: user.age, cart_Id: user.cart_Id } })
             return updateUser;
         } catch (error) {
             console.log(error);

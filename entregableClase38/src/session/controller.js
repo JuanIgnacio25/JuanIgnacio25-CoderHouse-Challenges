@@ -1,14 +1,37 @@
-const {updateRegisteredUser} = require('./service');
+const { sessionService } = require('./service');
 
-const registerUser = async(req,res) => {
-    const obj = {
+const registerUser = async (req, res) => {
+    const info = {
         name: req.body.name,
         address: req.body.address,
         number: req.body.phone,
         age: req.body.age
     }
-    await updateRegisteredUser(req.body.username,obj)
-    res.send({user: user});
+    await sessionService.updateRegisteredUser(req.body.username, info);
+    res.redirect('/api/products');
 }
 
-module.exports = {registerUser};
+const authUser = (req, res) => {
+    res.redirect('/api/products')
+}
+
+const renderRegister = (req, res) => {
+    res.render('signin');
+}
+
+const renderLogin = (req, res) => {
+    res.render('login');
+};
+
+const renderError = (req,res) => {
+    res.render('error');
+};
+
+const logOut = (req, res, next) => {
+    req.logout((error) => {
+        if (error) return next(error)
+    })
+    res.redirect('/');
+}
+
+module.exports = { sessionController: { registerUser, renderRegister, renderLogin, authUser, logOut,renderError } };

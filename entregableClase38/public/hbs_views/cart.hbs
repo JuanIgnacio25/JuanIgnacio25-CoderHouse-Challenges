@@ -1,11 +1,3 @@
-<form action="/logout">
-    <input type="submit" value="logout">
-</form>
-
-<form action="/api/cart/">
-    <input type="submit" value="cart">
-</form>
-
 <h1>Products</h1>
 <div>
     {{#if products}}
@@ -41,13 +33,3 @@
     <h2>No hay productos</h2>
     {{/if}}
 </div>
-
-<h1>User Data</h1>
-<ul>
-    <li>Username: {{this.username}}</li>
-    <li>Name: {{this.name}}</li>
-    <li>Age: {{this.age}}</li>
-    <li>Address: {{this.address}}</li>
-    <li>Phone Number: {{this.phone_number}}</li>
-    <li>Profile Photo: <img style="width: 50px; height:50px" src="../uploads/{{this.username}}.jpeg" alt="photo"></li>
-</ul>

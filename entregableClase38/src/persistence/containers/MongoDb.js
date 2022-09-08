@@ -8,7 +8,6 @@ class MongoDbContainer {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
-    console.log("Conectado a DB de mongo");
     this.collection = mongoose.model(collection, prodSchema);
   }
 }
