@@ -1,4 +1,7 @@
-<h1>Products</h1>
+<form action="/api/products/">
+    <input type="submit" value="Products">
+</form>
+<h1>Cart</h1>
 <div>
     {{#if products}}
     <table>
@@ -9,7 +12,6 @@
             <th>Description</th>
             <th>TimeStapm</th>
             <th>Thumbnail</th>
-            <th> </th>
         </thead>
         <tbody>
             {{#each products}}
@@ -20,16 +22,15 @@
                 <td>{{this.description}}</td>
                 <td>{{this.timestamp}}</td>
                 <td><img style="width: 50px; height:50px" src={{this.thumbnail}}></td>
-                <td>
-                    <form action="/api/products/buy" method="POST">
-                        <input type="submit" value="Buy">
-                    </form>
-                </td>
             </tr>
             {{/each}}
         </tbody>
     </table>
     {{else}}
-    <h2>No hay productos</h2>
+    <h2>No hay productos en el carrito</h2>
     {{/if}}
 </div>
+
+<form action="/api/cart/buy" method="POST">
+    <input type="submit" value="Buy">
+</form>

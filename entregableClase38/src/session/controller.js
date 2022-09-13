@@ -1,4 +1,5 @@
-const { sessionService } = require('./service');
+const  sessionService  = require('./service');
+
 
 const registerUser = async (req, res) => {
     const info = {

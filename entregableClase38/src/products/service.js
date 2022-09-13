@@ -1,7 +1,6 @@
 const DaoFireBaseProducts = require('./dao');
 const producsDao = new DaoFireBaseProducts();
-const {sessionService} = require('../session/service');
-
+const sessionService = require('../session/service');
 
 const getAllProducts = async () => {
     try {
@@ -17,4 +16,9 @@ const findUser = async(username) => {
     return result[0];
 }
 
-module.exports = { productService:{getAllProducts,findUser} };
+const getByTitle = async(title) => {
+    const result = await producsDao.getByTitle(title);
+    return result[0];
+}
+
+module.exports = { productService:{getAllProducts,findUser,getByTitle} };

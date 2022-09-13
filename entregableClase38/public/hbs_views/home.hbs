@@ -3,8 +3,8 @@
 </form>
 
 <form action="/api/cart/">
-    <input type="submit" value="cart">
-</form>
+    <input type="submit" value="Cart">
+</form> 
 
 <h1>Products</h1>
 <div>
@@ -17,7 +17,7 @@
             <th>Description</th>
             <th>TimeStapm</th>
             <th>Thumbnail</th>
-            <th> </th>
+            <th></th>
         </thead>
         <tbody>
             {{#each products}}
@@ -29,8 +29,9 @@
                 <td>{{this.timestamp}}</td>
                 <td><img style="width: 50px; height:50px" src={{this.thumbnail}}></td>
                 <td>
-                    <form action="/api/products/buy" method="POST">
-                        <input type="submit" value="Buy">
+                    <form action="/api/cart/" method="POST">
+                        <input type="hidden" value="{{this.title}}" name="title">
+                        <input type="submit" value="Add to cart">
                     </form>
                 </td>
             </tr>

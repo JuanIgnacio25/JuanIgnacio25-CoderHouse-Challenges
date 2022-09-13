@@ -28,6 +28,17 @@ class DaoFireBaseCart extends FireBaseContainer {
             console.log("error al buscar por id: ", error);
         }
     }
+
+    async replaceById(id, data) {
+        try {
+            const result = await this.collection.doc(id).update(data);
+            return result;
+        }
+        catch (error) {
+            console.log("error al reemplazar datos: ", error);
+            return null;
+        }
+    }
 }
 
 module.exports = DaoFireBaseCart;
