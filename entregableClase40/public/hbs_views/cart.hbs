@@ -1,0 +1,36 @@
+<form action="/api/products/">
+    <input type="submit" value="Products">
+</form>
+<h1>Cart</h1>
+<div>
+    {{#if products}}
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Code</th>
+            <th>Description</th>
+            <th>TimeStapm</th>
+            <th>Thumbnail</th>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>{{this.price}}</td>
+                <td>{{this.code}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.timestamp}}</td>
+                <td><img style="width: 50px; height:50px" src={{this.thumbnail}}></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{else}}
+    <h2>No hay productos en el carrito</h2>
+    {{/if}}
+</div>
+
+<form action="/api/cart/buy" method="POST">
+    <input type="submit" value="Buy">
+</form>
