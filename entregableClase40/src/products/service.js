@@ -1,5 +1,5 @@
-const DaoFireBaseProducts = require('./dao');
-const producsDao = new DaoFireBaseProducts();
+const {ProductsRepository} = require('./persistence/ProductsRepository');
+const producsDao = new ProductsRepository();
 const sessionService = require('../session/service');
 
 const getAllProducts = async () => {

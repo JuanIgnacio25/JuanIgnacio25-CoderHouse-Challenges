@@ -1,5 +1,9 @@
-const DaoFireBaseCart = require('./dao');
-const cartDao = new DaoFireBaseCart();
+const minimist = require('minimist');
+const argType = minimist(process.argv.slice(3), { alias: { 'tc': 'type_cart' }, default: { 'type_cart': 'firebase'} });
+const type = argType.type_cart;
+console.log(type);
+const { CartDaoFactory } = require('./persistence/CartDaoFactory');
+const cartDao = new CartDaoFactory().getDao(type);
 const transport = require('../utils/transport');
 
 class CartService {

@@ -29,10 +29,10 @@ const renderError = (req,res) => {
 };
 
 const logOut = (req, res, next) => {
-    req.logout((error) => {
+    req.session.destroy((error) => {
         if (error) return next(error)
     })
-    res.redirect('/');
+    res.redirect('/login');
 }
 
 module.exports = { sessionController: { registerUser, renderRegister, renderLogin, authUser, logOut,renderError } };

@@ -27,8 +27,8 @@ passport.serializeUser((user, callback) => {
     callback(null, user.username)
 });
 
-passport.deserializeUser((username, callback) => {
-    const user = mongo.findUser(username);
+passport.deserializeUser(async (username, callback) => {
+    const user = await sessionService.findUser(username);
     callback(null, user)
 });
 

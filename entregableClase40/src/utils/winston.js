@@ -10,8 +10,5 @@ const logger = winston.createLogger({
 })
 
 module.exports = {
-    info : (req,res,next)=>{
-        logger.info(`ruta ${req.url}, método ${req.method}`)
-        next()
-    }
+    logger
 }
