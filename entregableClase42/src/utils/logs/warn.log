@@ -1,0 +1,20 @@
+{"level":"warn","message":"ruta /api/uploads/user@gmail.com.jpeg, método GET no implementada"}
+{"level":"warn","message":"ruta /api/uploads/user@gmail.com.jpeg, método GET no implementada"}
+{"level":"warn","message":"ruta /api/uploads/user@gmail.com.jpeg, método GET no implementada"}
+{"level":"warn","message":"ruta /favicon.ico, método GET no implementada"}
+{"level":"warn","message":"ruta /api/uploads/user@gmail.com.jpeg, método GET no implementada"}
+{"level":"warn","message":"ruta /api/uploads/user@gmail.com.jpeg, método GET no implementada"}
+{"level":"warn","message":"ruta /api/uploads/user@gmail.com.jpeg, método GET no implementada"}
+{"level":"error","message":"mongo is not defined"}
+{"level":"error","message":"mongo is not defined"}
+{"level":"warn","message":"ruta /api/addProduct?, método GET no implementada"}
+{"level":"warn","message":"ruta /favicon.ico, método GET no implementada"}
+{"level":"warn","message":"ruta /api/addProduct?, método GET no implementada"}
+{"level":"warn","message":"ruta /addproduct, método POST no implementada"}
+{"level":"warn","message":"ruta /addproduct, método POST no implementada"}
+{"level":"warn","message":"ruta /api/cart/delete, método POST no implementada"}
+{"level":"warn","message":"ruta /api/cart/delete?title=Porta+Botellas, método GET no implementada"}
+{"level":"warn","message":"ruta /api/cart/delete?title=Porta+Botellas, método GET no implementada"}
+{"level":"warn","message":"ruta /api/cart/delete?, método GET no implementada"}
+{"level":"warn","message":"ruta /api/cart/delete?, método GET no implementada"}
+{"level":"warn","message":"ruta /api/cart/delete?title=Porta+Botellas, método GET no implementada"}
