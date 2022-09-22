@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const MongoDbContainer = require('../configs/MongoDb');
+const MongoDbContainer = require('../../configs/MongoDb');
 
 const userSchema = new mongoose.Schema({
     username: { type: String },

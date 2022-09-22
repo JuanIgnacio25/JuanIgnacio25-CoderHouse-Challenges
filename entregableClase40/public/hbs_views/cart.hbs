@@ -12,6 +12,7 @@
             <th>Description</th>
             <th>TimeStapm</th>
             <th>Thumbnail</th>
+            <th></th>
         </thead>
         <tbody>
             {{#each products}}
@@ -22,6 +23,12 @@
                 <td>{{this.description}}</td>
                 <td>{{this.timestamp}}</td>
                 <td><img style="width: 50px; height:50px" src={{this.thumbnail}}></td>
+                <td>
+                    <form action="/api/cart/delete" method="POST">
+                        <input type="hidden" value="{{this.title}}" name="title">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
             </tr>
             {{/each}}
         </tbody>

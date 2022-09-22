@@ -1,9 +1,14 @@
-const FireBaseContainer = require('../persistence/containers/FireBase');
+const FireBaseContainer = require('../../../../configs/FireBase');
+
+let instance = null;
 
 class DaoFireBaseProducts extends FireBaseContainer {
     constructor() {
         super('products')
-        this.id = 1
+    }
+    static getInstance() {
+        if (!instance) instance = new DaoFireBaseProducts();
+        return instance;
     }
 
     async getAll() {
@@ -17,22 +22,16 @@ class DaoFireBaseProducts extends FireBaseContainer {
     }
 
     async save(product) {
-        try {
-            const idProduct = JSON.stringify(this.id);
-            this.id++
             try {
+                const idProduct = String(product.id);
                 const productToSave = this.collection.doc(idProduct);
                 await productToSave.create(product);
-                return idDoc;
+                return idProduct;
             }
             catch (error) {
                 console.log("el error al guardar fue: ", error);
             }
         }
-        catch (error) {
-            console.log("error en Save): ", error);
-        }
-    }
 
 
     async replaceById(idSearch, data) {
@@ -56,9 +55,9 @@ class DaoFireBaseProducts extends FireBaseContainer {
         }
     }
 
-    async getByTitle(title){
+    async getByTitle(title) {
         try {
-            const products = await this.collection.where('title','==',`${title}`).get();
+            const products = await this.collection.where('title', '==', `${title}`).get();
             return products.docs.map(doc => doc.data());
 
         } catch (error) {
@@ -82,4 +81,4 @@ class DaoFireBaseProducts extends FireBaseContainer {
     }
 }
 
-module.exports = DaoFireBaseProducts
+module.exports = { DaoFireBaseProducts }

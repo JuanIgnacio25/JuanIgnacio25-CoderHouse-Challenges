@@ -9,7 +9,7 @@ const options = {
     resave: true,
     rolling: true,
     saveUninitialized: false,
-    cookie: { maxAge: 60000 }
+    cookie: { maxAge: 600000 }
 }
 
 module.exports = options;

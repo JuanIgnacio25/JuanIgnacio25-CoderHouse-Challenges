@@ -6,13 +6,13 @@ const {engine} = require('express-handlebars');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 
-const sessionOptions = require('./src/utils/session_options');
-const engine_options = require('./src/utils/engine_hbs');
+const sessionOptions = require('./utils/session_options');
+const engine_options = require('./utils/engine_hbs');
 const passport = require('passport');
-const logger = require('./src/middlewares/logger');
-const productsRouter = require('./src/products/router');
-const sessionRouter = require('./src/session/router');
-const cartRouter = require('./src/cart/router');
+const logger = require('./middlewares/logger');
+const productsRouter = require('./modules/products/router');
+const sessionRouter = require('./modules/session/router');
+const cartRouter = require('./modules/cart/router');
 
 const app = express();
 

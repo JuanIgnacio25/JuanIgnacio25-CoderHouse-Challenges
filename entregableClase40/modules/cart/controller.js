@@ -1,6 +1,6 @@
 const cartService  = require('./service');
 const sessionService = require('../session/service');
-const {productService:productService} = require('../products/service');
+const productService = require('../products/service');
 
 const renderCart = async (req, res) => {
     try {
@@ -25,6 +25,12 @@ const addProductToCart = async(req,res) => {
 };
 
 const removeProductFromCart = async(req,res) => {
+    const title = req.body.title;
+    const username = req.session.passport.user;
+    const user = (await sessionService.findUser(username))[0];
+    const product = await productService.getByTitle(title);
+    await cartService.deleteFromCart(user,product);
+    res.redirect('/login');
 
 };
 

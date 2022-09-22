@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const upload = require('../utils/multer');
+const upload = require('../../utils/multer');
 const passport = require('./middlewares/passport');
-const {isLoged} = require('../middlewares/checkLogin');
+const {isLoged} = require('../../middlewares/checkLogin');
 const {sessionController} = require('./controller');
 
 router.post('/signin',upload.single('file'),passport.authenticate('signIn', { failureRedirect: '/error_signIn', failureMessage: true }),sessionController.registerUser);

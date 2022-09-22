@@ -3,17 +3,29 @@ const argType = minimist(process.argv.slice(3), { alias: { 'tc': 'type_cart' }, 
 const type = argType.type_cart;
 console.log(type);
 const { CartDaoFactory } = require('./persistence/CartDaoFactory');
-const cartDao = new CartDaoFactory().getDao(type);
-const transport = require('../utils/transport');
+const transport = require('../../utils/transport');
 
 class CartService {
     constructor() {
-        this.cartDao = cartDao;
+        this.cartDao = new CartDaoFactory().getDao(type);
     }
+
+    async createId(){
+        const carts = await this.cartDao.getAll();
+        let id = 1;
+        if(carts.length>0) {
+            let i = carts.length - 1;
+            id = carts[i].id + 1
+        }
+        return id;
+    }
+
     async createCart() {
+        const newId = await this.createId();
         const newCart = {
             timestamp: Date.now(),
-            products: []
+            products: [],
+            id: newId
         }
         const saveCart = this.cartDao.save(newCart);
         return saveCart;
@@ -38,6 +50,18 @@ class CartService {
         const idCart = String(user.cart_Id);
         cart.products.push(product)
         await this.cartDao.replaceById(idCart, cart);
+    }
+
+    async deleteFromCart(user,product){
+        try {
+            const cart = await this.findCart(user);
+            const productId = product.id;
+            cart.products = cart.products.filter((prod) => prod.id !== productId);
+            const idCart = String(user.cart_Id);
+            await this.cartDao.replaceById(idCart,cart);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     async buy(user, cart) {
