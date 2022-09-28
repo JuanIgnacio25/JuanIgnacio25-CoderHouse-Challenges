@@ -2,6 +2,7 @@ const { describe, it } = require('mocha');
 const { expect } = require('chai');
 const supertest = require('supertest');
 const { app } = require('../server');
+const { deleteProduct } = require('../products/graphQL/resolvers/graphqlResolver');
 
 
 const request = supertest(app)
@@ -59,7 +60,7 @@ describe("eliminar un producto", () => {
         expect(response.text).to.eq("El producto no existe")
     })
     it("elimina el producto si encuentra el id", async () => {
-        const response = await request.delete("/api/products/4")
-        expect(response.text).to.eq("producto con id 4 eliminado exitosamente")
+        const response = await (await request.delete("/api/products/4"))
+        expect(response.body.nombre).to.eq('pera')
     })
 })

@@ -1,4 +1,4 @@
-const {FilePersistence} = require('./fsPersistence');
+const {FilePersistence} = require('../fsPersistence');
 
 class ProductDao{
     constructor(){

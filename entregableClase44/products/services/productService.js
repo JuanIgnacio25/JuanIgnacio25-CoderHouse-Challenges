@@ -1,4 +1,4 @@
-const { ProductDao } = require('./persistence/ProductDaoFs');
+const { ProductDao } = require('../persistence/daos/ProductDaoFs');
 
 class ProductService {
     constructor() {
@@ -64,7 +64,7 @@ class ProductService {
                 let products = await this.dao.getProducts();
                 let filteredProducts = products.filter((x) => x.id !== Number(id))
                 await this.dao.deleteProduct(filteredProducts);
-                return `producto con id ${id} eliminado exitosamente`
+                return products[i];
             }
         } catch (error) {
             console.log(error);
@@ -81,7 +81,6 @@ class ProductService {
                 (body.imagen) ? allProducts[i].imagen = body.imagen : null;
                 (body.precio) ? allProducts[i].precio = body.precio : null;
                 await this.dao.saveProduct(allProducts);
-                console.log(allProducts[i]);
                 return allProducts[i];
             }
         } catch (error) {

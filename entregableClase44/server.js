@@ -1,5 +1,6 @@
 const express = require('express');
-const {router:productRouter} = require('./products/router');
+const {productRouter} = require('./products/routes/productRouter');
+const {graphqlRouter} = require('./products/graphQL/routes_graphql/graphqlRouter')
 
 
 const app = express();
@@ -7,6 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(graphqlRouter);
 app.use('/api/products', productRouter);
 
 
